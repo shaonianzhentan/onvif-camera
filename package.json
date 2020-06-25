@@ -1,0 +1,23 @@
+{
+  "name": "onvif-camera",
+  "version": "1.0.0",
+  "description": "摄像头控制",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shaonianzhentan/onvif-camera.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shaonianzhentan/onvif-camera/issues"
+  },
+  "homepage": "https://github.com/shaonianzhentan/onvif-camera#readme",
+  "dependencies": {
+    "mqtt": "^4.1.0",
+    "node-onvif": "^0.1.7"
+  }
+}
