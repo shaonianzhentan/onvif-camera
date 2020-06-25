@@ -5,6 +5,7 @@ const { spawn } = require('child_process');
 module.exports = class {
 
     constructor({ ip, user, password }) {
+        this.ip = ip
         this.rtsp = `rtsp://${user}:${password}@${ip}:544/`
         this.ls = null
         // 初始化控制器
@@ -24,7 +25,7 @@ module.exports = class {
 
     // 录制
     record() {
-        let { rtsp, ls } = this
+        let { rtsp, ls, ip } = this
 
         if (ls != null) {
             this.stop();
@@ -89,7 +90,7 @@ module.exports = class {
             console.log('当前设备未初始化')
             return
         }
-        if (loading === true) return
+        if (loading) return
         this.loading = true
         // 移动
         device.ptzMove({
@@ -111,7 +112,7 @@ module.exports = class {
                 }).catch((error) => {
                     console.error(error);
                 }).finally(() => {
-                    this.loading = true
+                    this.loading = false
                 });
             }, 3000);
         }).catch((error) => {
