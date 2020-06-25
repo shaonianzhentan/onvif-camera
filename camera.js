@@ -6,7 +6,7 @@ module.exports = class {
 
     constructor({ ip, user, password }) {
         this.ip = ip
-        this.rtsp = `rtsp://${user}:${password}@${ip}:544/`
+        this.rtsp = `rtsp://${user}:${password}@${ip}:554/`
         this.ls = null
         // 初始化控制器
         let device = new onvif.OnvifDevice({
