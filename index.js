@@ -1,5 +1,8 @@
 const mqtt = require('mqtt')
-const client = mqtt.connect('mqtt://192.168.1.110')
+const client = mqtt.connect('mqtt://192.168.1.110', {
+    username: 'admin',
+    password: 'public'
+})
 const Camera = require('./camera')
 
 const device = {
@@ -45,8 +48,6 @@ client.on('message', function (topic, message) {
         }
     })
 })
-
-
 
 client.on('disconnect', function () {
     console.log('断开连接')

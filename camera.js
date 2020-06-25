@@ -35,7 +35,7 @@ module.exports = class {
         }
         else {
             let today = new Date()
-            let dir = ip + '/' + [today.getFullYear(), today.getMonth(), today.getDate(), today.getHours(), today.getMinutes()].join('-')
+            let dir = 'data/' + ip + '/' + [today.getFullYear(), today.getMonth(), today.getDate(), today.getHours(), today.getMinutes()].join('-')
             fs.mkdirSync(dir)
             this.playlist = `${dir}/playlist.m3u8`
             let args = `-i ${rtsp} -c copy -map 0 -f segment -segment_list ${this.playlist} -segment_time 5 ${dir}/output%03d.ts`
