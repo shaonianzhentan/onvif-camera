@@ -4,15 +4,13 @@ const { spawn } = require('child_process');
 
 module.exports = class {
 
-    constructor({ ip, user, password }) {
+    constructor({ ip, user, password, rtsp, xaddr }) {
         this.ip = ip
-        this.rtsp = `rtsp://${user}:${password}@${ip}:554/`
+        this.rtsp = rtsp
         this.ls = null
         // 初始化控制器
         let device = new onvif.OnvifDevice({
-            xaddr: `http://${ip}/onvif/device_service`,
-            user,
-            pass: password
+            xaddr,user,pass: password
         });
         this.loading = false
         device.init().then((info) => {
@@ -36,10 +34,10 @@ module.exports = class {
         }
         else {
             let today = new Date()
-            
+
             let ipDir = 'data/' + ip
             if (!fs.existsSync(ipDir)) fs.mkdirSync(ipDir)
-            
+
             let dir = ipDir + '/' + [today.getFullYear(), today.getMonth(), today.getDate(), today.getHours(), today.getMinutes()].join('-')
             if (!fs.existsSync(dir)) fs.mkdirSync(dir)
 

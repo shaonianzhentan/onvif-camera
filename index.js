@@ -9,7 +9,16 @@ const device = {
     '192.168.1.104': new Camera({
         ip: '192.168.1.104',
         user: 'admin',
-        password: '123456'
+        password: '123456',
+        rtsp: 'rtsp://admin:123456@192.168.1.104:554/',
+        xaddr:`http://192.168.1.104/onvif/device_service`
+    }),
+    '192.168.1.118': new Camera({
+        ip: '192.168.1.118',
+        user: 'admin',
+        password: '00000000',
+        rtsp: 'rtsp://admin:00000000@192.168.1.118:554/onvif1', // 次码流：onvif2
+        xaddr:`http://192.168.1.118:5000/onvif/device_service`
     })
 }
 
