@@ -18,6 +18,7 @@
   "homepage": "https://github.com/shaonianzhentan/onvif-camera#readme",
   "dependencies": {
     "mqtt": "^4.1.0",
-    "node-onvif": "^0.1.7"
+    "node-onvif": "^0.1.7",
+    "yaml": "^1.10.0"
   }
 }
