@@ -17,6 +17,10 @@
   },
   "homepage": "https://github.com/shaonianzhentan/onvif-camera#readme",
   "dependencies": {
+    "koa": "^2.13.0",
+    "koa-body": "^4.2.0",
+    "koa-send": "^5.0.1",
+    "koa2-cors": "^2.0.6",
     "mqtt": "^4.1.0",
     "node-onvif": "^0.1.7",
     "yaml": "^1.10.0"
