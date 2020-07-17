@@ -23,7 +23,7 @@ function startRecord(rtsp) {
     let dir = ipPath + '/' + [today.getFullYear(), today.getMonth(), today.getDate(), today.getHours(), today.getMinutes()].join('-')
     if (!fs.existsSync(dir)) fs.mkdirSync(dir)
     // 生成录像参数
-    let args = `-i ${rtsp} -c copy -map 0 -f segment -segment_list ${dir}/playlist.m3u8 -segment_time 5 ${dir}/output%09d.ts`
+    let args = `-i ${rtsp} -c copy -map 0 -acodec copy -f segment -segment_list ${dir}/playlist.m3u8 -segment_time 5 ${dir}/output%09d.ts`
     console.log(args)
     const ls = spawn('ffmpeg', args.split(" "));
 
