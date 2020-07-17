@@ -66,10 +66,9 @@ app.use(async ctx => {
             console.log('有权限访问')
             let filePath = url.replace(`/${token}`, '')
             if (filePath.indexOf('/get') == 0) {
-                let { ip, time } = query
+                let { ip } = query
                 let dir = 'data'
                 if (ip) dir += `/${ip}`
-                if (ip && time) dir += `/${time}`
                 let arr = []
                 if (fs.existsSync(dir)) {
                     arr = fs.readdirSync(dir)
