@@ -1,6 +1,5 @@
 const Koa = require('koa');
 const send = require('koa-send');
-const koaBody = require('koa-body');
 const cors = require('koa2-cors');
 
 const fs = require('fs')
@@ -56,39 +55,32 @@ config.rtsp.forEach(url => {
 // 开启服务
 const app = new Koa();
 app.use(cors());
-app.use(koaBody());
 
 const token = config.token
 
 app.use(async ctx => {
-    let { url, method, body } = ctx.request
+    let { url, method, query } = ctx.request
     if (method == 'GET') {
         // 判断url是否存在
         if (url.includes(token)) {
             console.log('有权限访问')
             let filePath = url.replace(`/${token}`, '')
-            let storagePath = path.resolve(__dirname, './data') + '/'
-            console.log(storagePath, filePath)
-            await send(ctx, filePath, { root: storagePath });
-        }
-    } else if (method == 'POST') {
-        let { type, data } = body
-        let res = {
-            code: 401,
-            msg: '没有权限'
-        }
-        // url有token值
-        if (url.includes(token)) {
-            if (type == "get") {
+            if (filePath.indexOf('/get') == 0) {
                 let arr = []
-                let dir = `data${data ? data : ''}`
+                let dir = `data${query.path ? query.path : ''}`
                 if (fs.existsSync(dir)) {
                     arr = fs.readdirSync(dir)
                 }
-                res = { code: 0, data: arr }
+                ctx.body = {
+                    code: 0,
+                    data: arr
+                }
+            } else {
+                let storagePath = path.resolve(__dirname, './data') + '/'
+                console.log(storagePath, filePath)
+                await send(ctx, filePath, { root: storagePath });
             }
         }
-        ctx.body = res;
     }
 });
 
