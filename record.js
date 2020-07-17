@@ -63,8 +63,8 @@ app.use(async ctx => {
     if (method == 'GET') {
         // 判断url是否存在
         if (url.includes(token)) {
-            console.log('有权限访问')
             let filePath = url.replace(`/${token}`, '')
+            console.log('获取地址：', filePath)
             if (filePath.indexOf('/get') == 0) {
                 let { ip } = query
                 let dir = 'data'
