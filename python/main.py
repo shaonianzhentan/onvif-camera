@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: UTF-8 -*-
+
 import json, yaml, os
 import paho.mqtt.client as mqtt
 from .move import continuous_move
