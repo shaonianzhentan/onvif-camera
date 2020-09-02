@@ -9,7 +9,7 @@ from onvif import ONVIFCamera
 '''  读取本地配置 '''
 def get_yaml_data(yaml_file):
     with io.open(yaml_file,'r',encoding='utf-8') as f:
-        file_data = file.read()
+        file_data = f.read()
     return yaml.load(file_data)
 
 current_path = os.path.abspath(".")
