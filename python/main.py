@@ -10,7 +10,8 @@ from onvif import ONVIFCamera
 def get_yaml_data(yaml_file):
     with io.open(yaml_file,'r',encoding='utf-8') as f:
         file_data = f.read()
-    return yaml.load(file_data)
+    print(file_data)
+    return yaml.load(file_data, Loader=yaml.FullLoader)
 
 current_path = os.path.abspath(".")
 yaml_path = os.path.join(current_path, "config.yaml")
