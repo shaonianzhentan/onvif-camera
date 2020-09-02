@@ -58,7 +58,7 @@ def move_left(ptz, request, timeout=1):
     perform_move(ptz, request, timeout)
 
 def continuous_move(direction, host, port, user, password):
-    mycam = ONVIFCamera(host, port, user, password)
+    mycam = ONVIFCamera(host, port, user, password, '/etc/wsdl/')
     # Create media service object
     media = mycam.create_media_service()
     # Create ptz service object
