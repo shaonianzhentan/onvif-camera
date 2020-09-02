@@ -1,18 +1,16 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
 
-import json, yaml, os
+import json, yaml, os, io
 import paho.mqtt.client as mqtt
 from time import sleep
 from onvif import ONVIFCamera
 
 '''  读取本地配置 '''
 def get_yaml_data(yaml_file):
-    file = open(yaml_file, 'r', encoding="utf-8")
-    file_data = file.read()
-    file.close()
-    data = yaml.load(file_data)
-    return data
+    with io.open(yaml_file,'r',encoding='utf-8') as f:
+        file_data = file.read()
+    return yaml.load(file_data)
 
 current_path = os.path.abspath(".")
 yaml_path = os.path.join(current_path, "config.yaml")
